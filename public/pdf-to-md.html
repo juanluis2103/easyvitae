@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Primary SEO -->
+  <title>PDF a Markdown — Extrae texto de un PDF a .md online y gratis | pdf to md</title>
+  <meta name="description" content="Convierte PDF a Markdown online y gratis. Sube un PDF, extrae su texto automáticamente y descarga un archivo .md editable. Detecta títulos y listas. Sin registro." />
+  <meta name="keywords" content="pdf to md, pdf a md, pdf a markdown, pdf to markdown, extraer texto de pdf, convertir pdf a markdown, pdf to text, pdf a texto, sacar texto de un pdf" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://mdtopdf.app/pdf-to-md.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="PDF a Markdown — Extrae texto de un PDF a .md gratis" />
+  <meta property="og:description" content="Sube un PDF, extrae su texto y descarga Markdown editable. Gratis y sin registro." />
+  <meta property="og:url" content="https://mdtopdf.app/pdf-to-md.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "PDF a Markdown",
+    "alternateName": ["pdf to md", "pdf a markdown"],
+    "description": "Extrae el texto de un PDF y lo convierte en Markdown editable, online y gratis.",
+    "url": "https://mdtopdf.app/pdf-to-md.html",
+    "applicationCategory": "Productivity",
+    "operatingSystem": "Any (web browser)",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <nav class="topnav">
+    <a class="brand" href="/">
+      <span class="logo">.md</span>
+      <span><span class="dot">.md</span> tools</span>
+    </a>
+    <span class="spacer"></span>
+    <a class="navlink" href="/md-to-pdf.html">md → PDF</a>
+    <a class="navlink" href="/pdf-to-md.html">PDF → md</a>
+  </nav>
+
+  <div class="toolbar">
+    <span class="title">PDF → .md</span>
+    <span class="sub">Sube un PDF y extrae su texto a Markdown editable</span>
+    <h1 class="visually-hidden">Convertir PDF a Markdown online y gratis (pdf to md)</h1>
+    <div class="controls">
+      <label class="file-label">📂 Cargar otro PDF
+        <input type="file" id="fileInput" accept="application/pdf,.pdf" />
+      </label>
+      <button class="btn ghost" id="copy" disabled>Copiar</button>
+      <button class="btn" id="download" disabled>Descargar .md</button>
+    </div>
+  </div>
+
+  <main class="app-main">
+    <!-- Izquierda: el PDF original -->
+    <section class="pane">
+      <div class="pane-head">PDF original</div>
+
+      <!-- Estado vacío: zona para arrastrar/soltar -->
+      <div class="dropzone" id="dropzone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <path d="M14 2v6h6"/>
+          <path d="M12 18v-6"/>
+          <path d="M9 15l3-3 3 3"/>
+        </svg>
+        <span class="big">Arrastra tu PDF aquí</span>
+        <span>o haz clic para seleccionar un archivo · máx. 2&nbsp;MB</span>
+      </div>
+
+      <!-- Vista del PDF subido (oculta hasta cargar) -->
+      <iframe id="pdfPreview" title="Vista previa del PDF" style="display:none"></iframe>
+    </section>
+
+    <!-- Derecha: el Markdown resultante, en su formato .md -->
+    <section class="pane">
+      <div class="pane-head">
+        Markdown (.md)
+        <span class="status" id="status"></span>
+      </div>
+      <textarea id="output" spellcheck="false" placeholder="El Markdown extraído aparecerá aquí..."></textarea>
+    </section>
+  </main>
+
+  <script src="/pdf-to-md.js"></script>
+</body>
+</html>

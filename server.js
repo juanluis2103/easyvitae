@@ -4,6 +4,7 @@ import puppeteer from 'puppeteer';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import { renderResumeHtml } from './src/template.js';
+import { pdfBufferToMarkdown } from './src/pdf-to-markdown.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -95,10 +96,36 @@ app.post('/generate', upload.single('file'), async (req, res) => {
   }
 });
 
+// PDF → Markdown: sube un .pdf (campo "file"), devuelve { markdown }.
+app.post('/extract', upload.single('file'), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ error: 'No se recibió ningún archivo PDF.' });
+    }
+    const isPdf =
+      req.file.mimetype === 'application/pdf' ||
+      /\.pdf$/i.test(req.file.originalname || '');
+    if (!isPdf) {
+      return res.status(400).json({ error: 'El archivo debe ser un PDF.' });
+    }
+
+    const markdown = await pdfBufferToMarkdown(req.file.buffer);
+    res.json({ markdown, filename: (req.file.originalname || 'document').replace(/\.pdf$/i, '') });
+  } catch (err) {
+    if (err?.message === 'EMPTY') {
+      return res.status(422).json({
+        error: 'No se encontró texto en el PDF. Puede ser un PDF escaneado (imagen) sin texto.',
+      });
+    }
+    console.error('Error extrayendo PDF:', err);
+    res.status(500).json({ error: 'No se pudo procesar el PDF.' });
+  }
+});
+
 app.get('/health', (_req, res) => res.json({ ok: true }));
 
 const server = app.listen(PORT, () => {
-  console.log(`easyvitae escuchando en http://localhost:${PORT}`);
+  console.log(`.md to PDF escuchando en http://localhost:${PORT}`);
 });
 
 async function shutdown() {

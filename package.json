@@ -1,7 +1,17 @@
 {
-  "name": "easyvitae",
+  "name": "md-to-pdf",
   "version": "1.0.0",
-  "description": "Convierte un CV en Markdown a un PDF limpio y ATS-friendly (formato USA, Software Engineer).",
+  "description": ".md to PDF — convertidor online y gratuito de Markdown (.md) a PDF, con vista previa en vivo y texto seleccionable ATS-friendly.",
+  "keywords": [
+    "md to pdf",
+    "md a pdf",
+    "markdown to pdf",
+    "convertidor markdown",
+    "markdown converter",
+    "md to docx",
+    "pdf",
+    "markdown"
+  ],
   "type": "module",
   "main": "server.js",
   "scripts": {
@@ -13,6 +23,7 @@
     "express": "^4.21.2",
     "marked": "^14.1.4",
     "multer": "^2.2.0",
+    "pdfjs-dist": "^4.10.38",
     "puppeteer": "^24.0.0"
   }
 }

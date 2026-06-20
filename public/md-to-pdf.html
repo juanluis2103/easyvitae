@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Primary SEO -->
+  <title>.md to PDF — Convertidor de Markdown a PDF online y gratis | md to pdf</title>
+  <meta name="description" content="Convierte Markdown (.md) a PDF online, gratis y sin registro. Convertidor md a pdf rápido con vista previa en vivo, texto seleccionable y resultado ATS-friendly. Ideal para CVs, READMEs y documentación." />
+  <meta name="keywords" content="md to pdf, md a pdf, markdown to pdf, convertir markdown a pdf, convertidor md a pdf, markdown a pdf online, .md to pdf, pasar md a pdf, convertir md a pdf gratis, markdown converter" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://mdtopdf.app/md-to-pdf.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content=".md to PDF — Convertidor de Markdown a PDF online y gratis" />
+  <meta property="og:description" content="Convierte Markdown (.md) a PDF gratis y sin registro. Vista previa en vivo y texto seleccionable ATS-friendly." />
+  <meta property="og:url" content="https://mdtopdf.app/md-to-pdf.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": ".md to PDF",
+    "alternateName": ["md to pdf", "Markdown a PDF"],
+    "description": "Convertidor online y gratuito de Markdown (.md) a PDF con vista previa en vivo y texto seleccionable ATS-friendly.",
+    "url": "https://mdtopdf.app/md-to-pdf.html",
+    "applicationCategory": "Productivity",
+    "operatingSystem": "Any (web browser)",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <nav class="topnav">
+    <a class="brand" href="/">
+      <span class="logo">.md</span>
+      <span><span class="dot">.md</span> tools</span>
+    </a>
+    <span class="spacer"></span>
+    <a class="navlink" href="/md-to-pdf.html">md → PDF</a>
+    <a class="navlink" href="/pdf-to-md.html">PDF → md</a>
+  </nav>
+
+  <div class="toolbar">
+    <span class="title">.md → PDF</span>
+    <span class="sub">Convierte Markdown a un PDF limpio y ATS-friendly</span>
+    <h1 class="visually-hidden">Convertidor de Markdown a PDF online y gratis (md to pdf)</h1>
+    <div class="controls">
+      <label class="field">Fuente
+        <select id="font">
+          <option value="calibri">Calibri</option>
+          <option value="arial">Arial</option>
+          <option value="garamond">Garamond</option>
+        </select>
+      </label>
+      <label class="field">Tamaño
+        <select id="bodySize">
+          <option value="10">10 pt</option>
+          <option value="10.5" selected>10.5 pt</option>
+          <option value="11">11 pt</option>
+        </select>
+      </label>
+      <button class="btn ghost" id="refresh">Actualizar vista</button>
+      <button class="btn" id="download">Descargar PDF</button>
+    </div>
+  </div>
+
+  <main class="app-main">
+    <section class="pane">
+      <div class="pane-head">
+        Markdown
+        <label class="file-label">📂 Cargar .md
+          <input type="file" id="fileInput" accept=".md,.markdown,text/markdown,text/plain" />
+        </label>
+        <span class="status" id="status"></span>
+      </div>
+      <textarea id="editor" spellcheck="false" placeholder="Pega aquí tu CV o documento en Markdown..."></textarea>
+    </section>
+    <section class="pane">
+      <div class="pane-head">Vista previa</div>
+      <iframe id="preview" title="Vista previa del PDF"></iframe>
+    </section>
+  </main>
+
+  <script src="/md-to-pdf.js"></script>
+</body>
+</html>

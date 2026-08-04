@@ -13,7 +13,7 @@
   --accent-soft: #dde6f4; /* tinted fill */
   --good: #3f7d54;        /* ink green */
   --radius: 8px;
-  --display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --display: var(--font-display), Georgia, 'Times New Roman', serif;
   --sans: system-ui, -apple-system, 'Segoe UI', sans-serif;
   --mono: 'Cascadia Code', 'Consolas', ui-monospace, monospace;
 }

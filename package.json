@@ -1,29 +1,33 @@
 {
   "name": "md-to-pdf",
-  "version": "1.0.0",
-  "description": ".md to PDF — convertidor online y gratuito de Markdown (.md) a PDF, con vista previa en vivo y texto seleccionable ATS-friendly.",
+  "version": "2.0.0",
+  "description": ".md tools — suite online y gratuita para convertir Markdown y PDF (md a pdf, md a docx, pdf a md), con vista previa en vivo. Migrada a Next.js.",
   "keywords": [
     "md to pdf",
     "md a pdf",
     "markdown to pdf",
-    "convertidor markdown",
-    "markdown converter",
     "md to docx",
-    "pdf",
-    "markdown"
+    "markdown to docx",
+    "pdf to md",
+    "pdf a markdown",
+    "convertidor markdown",
+    "nextjs"
   ],
+  "private": true,
   "type": "module",
-  "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node --watch server.js"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "license": "MIT",
   "dependencies": {
-    "express": "^4.21.2",
+    "docx": "^9.7.1",
     "marked": "^14.1.4",
-    "multer": "^2.2.0",
+    "next": "^14.2.15",
     "pdfjs-dist": "^4.10.38",
-    "puppeteer": "^24.0.0"
+    "puppeteer": "^24.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   }
 }

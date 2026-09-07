@@ -2,9 +2,10 @@ import { marked } from 'marked';
 
 /**
  * CSS pensado para ATS (Applicant Tracking Systems) en USA:
- * - Una sola columna, sin tablas, sin iconos, sin fotos, sin colores llamativos.
+ * - Una sola columna, sin iconos, sin fotos, sin colores llamativos (blanco y negro/gris).
  * - Texto negro sobre blanco, fuentes estándar seguras (Calibri / Arial / Garamond).
  * - El texto del PDF es real y seleccionable (no es una imagen), por eso el ATS lo lee.
+ * - Soporta tablas, bloques de código, citas, listas ordenadas/tareas y tachado (GFM).
  *
  * @param {Object} opts
  * @param {'calibri'|'arial'|'garamond'} [opts.font='calibri']
@@ -99,6 +100,79 @@ function buildCss({ font = 'calibri', bodySize = 10.5 } = {}) {
     a { color: #000; }
     strong, b { font-weight: 700; }
     em, i { font-style: italic; }
+    del, s { text-decoration: line-through; }
+
+    ol {
+      margin: 2pt 0 4pt 0;
+      padding-left: 18pt;
+    }
+    ol li { margin: 1.5pt 0; page-break-inside: avoid; }
+
+    /* Listas de tareas (- [ ] / - [x]): marked no añade una clase, se detecta por contenido */
+    li:has(> input[type='checkbox']) { list-style: none; margin-left: -16pt; padding-left: 16pt; }
+    input[type='checkbox'] { margin-right: 4pt; transform: translateY(1pt); }
+
+    /* Citas */
+    blockquote {
+      margin: 4pt 0 8pt 0;
+      padding: 1pt 10pt;
+      border-left: 2.5pt solid #999;
+      color: #333;
+      font-style: italic;
+      page-break-inside: avoid;
+    }
+    blockquote p { margin: 2pt 0; }
+
+    /* Tablas */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 5pt 0 9pt 0;
+      font-size: ${(bodySize - 0.5).toFixed(1)}pt;
+      page-break-inside: avoid;
+    }
+    th, td {
+      border: 1px solid #444;
+      padding: 3.5pt 6pt;
+      text-align: left;
+      vertical-align: top;
+    }
+    thead th {
+      background: #eee;
+      font-weight: 700;
+    }
+    tbody tr:nth-child(even) { background: #f7f7f7; }
+
+    /* Código en línea */
+    code {
+      font-family: 'Consolas', 'SFMono-Regular', 'Courier New', monospace;
+      font-size: ${(bodySize - 1).toFixed(1)}pt;
+      background: #f0f0f0;
+      padding: 1pt 3pt;
+      border-radius: 2pt;
+    }
+
+    /* Bloques de código */
+    pre {
+      background: #f5f5f5;
+      border: 1px solid #ddd;
+      border-radius: 3pt;
+      padding: 6pt 8pt;
+      margin: 4pt 0 8pt 0;
+      overflow-x: auto;
+      page-break-inside: avoid;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    pre code {
+      background: none;
+      border-radius: 0;
+      padding: 0;
+      font-size: ${(bodySize - 1).toFixed(1)}pt;
+      line-height: 1.35;
+    }
+
+    img { max-width: 100%; }
 
     hr {
       border: none;
@@ -107,7 +181,7 @@ function buildCss({ font = 'calibri', bodySize = 10.5 } = {}) {
     }
 
     /* Evitar cortes feos */
-    h2, h3 { page-break-inside: avoid; }
+    h2, h3, table, pre, blockquote { page-break-inside: avoid; }
   `;
 }
 
